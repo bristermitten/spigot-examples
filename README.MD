@@ -8,7 +8,7 @@ with minimal adjustments.
 * This repository follows the Allman code style.
 * PaperSpigot should be preferred over normal Spigot, as it has a richer API and features SLF4J, which this repository uses for logging.
 * This also features a lightweight Reflection library, as many operations use Reflection. This can either be copied, or converted to normal Reflection.
-* This repository always uses the latest Minecraft version that is stable.
+* This repository always uses the latest Minecraft version that is stable (currently 1.15.2)
 
 
 # Current Feature List
