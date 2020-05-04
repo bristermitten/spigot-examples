@@ -8,7 +8,7 @@ however it should be noted that some package names have been given underscores f
 For example `me.bristermitten.spigotexamples.runtime_dependencies` is not a traditionally conventional package name
 but is used to create a more readable name.
 
-#Current Feature List
+# Current Feature List
 * [Custom Enchantments](/src/main/java/me/bristermitten/spigotexamples/custom_enchantment)
 * [Runtime Dependencies](/src/main/java/me/bristermitten/spigotexamples/runtime_dependencies)
 * ????
