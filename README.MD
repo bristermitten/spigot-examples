@@ -1,7 +1,11 @@
 # Spigot Examples
 
 A set of example code showing how to do common tasks with the Spigot API.
+
 All examples are in Java, but some have Kotlin equivalents included.
+
+This repository also uses PaperSpigot for the sake of a richer API and SLF4J logging.
+
 
 These examples try to follow the best practices and convention whenever possible, 
 however it should be noted that some package names have been given underscores for the sake of readability.

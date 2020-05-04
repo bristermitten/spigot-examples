@@ -47,7 +47,7 @@ public class LibraryManager
         this.libsDirectory = new File(plugin.getDataFolder(), "libs");
         if (!libsDirectory.mkdirs())
         {
-            plugin.getLogger().warning("Could not create libs directory.");
+            plugin.getSLF4JLogger().warn("Could not create libs directory.");
         }
     }
 
@@ -87,8 +87,7 @@ public class LibraryManager
         }
         catch (IllegalAccessException | InvocationTargetException | MalformedURLException e)
         {
-            plugin.getLogger().severe("Could not invoke URLClassLoader#addUrl");
-            plugin.getLogger().throwing("LibraryManager", "loadIntoClasspath", e);
+            plugin.getSLF4JLogger().error("Could not invoke URLClassLoader#addUrl", e);
         }
     }
 
@@ -119,8 +118,8 @@ public class LibraryManager
         }
         catch (IOException e)
         {
-            plugin.getLogger().severe("Could not download " + library);
-            plugin.getLogger().throwing("LibraryManager", "downloadLibrary", e);
+            plugin.getSLF4JLogger().error("Could not download {}", library, e);
+
         }
     }
 }

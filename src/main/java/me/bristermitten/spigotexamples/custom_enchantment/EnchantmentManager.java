@@ -58,10 +58,9 @@ public final class EnchantmentManager
                 Enchantment.registerEnchantment(enchantment);
             }
         }
-        catch (ReflectiveOperationException ex)
+        catch (Exception ex)
         {
-            plugin.getLogger().severe("Could not register custom enchantments:");
-            plugin.getLogger().throwing("EnchantmentManager", "registerAllEnchantments", ex);
+            plugin.getSLF4JLogger().error("Could not register custom enchantments:", ex);
         }
         finally
         {
