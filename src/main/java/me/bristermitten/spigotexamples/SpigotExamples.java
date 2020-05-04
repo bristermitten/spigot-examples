@@ -1,5 +1,6 @@
 package me.bristermitten.spigotexamples;
 
+import com.google.common.primitives.UnsignedInts;
 import me.bristermitten.spigotexamples.customenchantment.EnchantmentManager;
 import me.bristermitten.spigotexamples.runtimelibraries.Library;
 import me.bristermitten.spigotexamples.runtimelibraries.LibraryManager;
@@ -27,6 +28,15 @@ public final class SpigotExamples extends JavaPlugin
                 new Library("org.jetbrains.kotlin", "kotlin-stdlib", kotlinVersion),
                 new Library("org.jetbrains.kotlin", "kotlin-stdlib-jdk8", kotlinVersion)
         );
+
+        try
+        {
+            Class.forName("kotlin.Unit");
+        }
+        catch (ClassNotFoundException e)
+        {
+            getSLF4JLogger().error("Kotlin stdlib was not loaded! Runtime Libraries didn't work?", e);
+        }
     }
 
     private void registerEnchantments()

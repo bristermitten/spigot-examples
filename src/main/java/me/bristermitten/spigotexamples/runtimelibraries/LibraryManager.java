@@ -6,12 +6,16 @@ import me.bristermitten.spigotexamples.reflect.ReflectionDefinition;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 
 /**
  * In charge of downloading libraries that are required.
@@ -90,6 +94,7 @@ public class LibraryManager
         try
         {
             addUrl.invoke(classLoader, libraryFile.toURI().toURL());
+            plugin.getSLF4JLogger().info("Loaded in {}", libraryFile);
         }
         catch (IllegalAccessException | InvocationTargetException | MalformedURLException e)
         {
@@ -110,16 +115,9 @@ public class LibraryManager
             final URL url = new URL(MAVEN_REPO_URL + library.toRepositoryURL());
 
             //Copy the data from the URL to the File
-            try (final BufferedWriter writer = new BufferedWriter(new FileWriter(jarFile)))
+            try (final InputStream inputStream = url.openStream())
             {
-                try (final BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream())))
-                {
-                    String nextLine;
-                    while ((nextLine = reader.readLine()) != null)
-                    {
-                        writer.write(nextLine);
-                    }
-                }
+                Files.copy(inputStream, jarFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
             }
         }
         catch (IOException e)
