@@ -1,0 +1,4 @@
+name: SpigotExamples
+version: @version@
+main: me.bristermitten.spigotexamples.SpigotExamples
+api-version: "1.13"
