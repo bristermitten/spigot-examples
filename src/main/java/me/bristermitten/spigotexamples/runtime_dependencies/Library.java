@@ -46,21 +46,6 @@ public final class Library
         this.jarName = String.format(JAR_NAME_FORMAT, artifactId, version);
     }
 
-    public @NotNull String getGroupId()
-    {
-        return groupId;
-    }
-
-    public @NotNull String getArtifactId()
-    {
-        return artifactId;
-    }
-
-    public @NotNull String getVersion()
-    {
-        return version;
-    }
-
     @NotNull
     public String getJarName()
     {
