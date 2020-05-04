@@ -1,6 +1,5 @@
-package me.bristermitten.spigotexamples.custom_enchantment;
+package me.bristermitten.spigotexamples.customenchantment;
 
-import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.enchantments.EnchantmentTarget;

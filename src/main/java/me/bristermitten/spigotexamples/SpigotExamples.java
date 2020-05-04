@@ -1,8 +1,8 @@
 package me.bristermitten.spigotexamples;
 
-import me.bristermitten.spigotexamples.custom_enchantment.EnchantmentManager;
-import me.bristermitten.spigotexamples.runtime_dependencies.Library;
-import me.bristermitten.spigotexamples.runtime_dependencies.LibraryManager;
+import me.bristermitten.spigotexamples.customenchantment.EnchantmentManager;
+import me.bristermitten.spigotexamples.runtimelibraries.Library;
+import me.bristermitten.spigotexamples.runtimelibraries.LibraryManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class SpigotExamples extends JavaPlugin

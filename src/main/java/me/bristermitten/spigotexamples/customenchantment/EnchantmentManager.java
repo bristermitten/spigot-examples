@@ -1,4 +1,4 @@
-package me.bristermitten.spigotexamples.custom_enchantment;
+package me.bristermitten.spigotexamples.customenchantment;
 
 import me.bristermitten.spigotexamples.reflect.MemberType;
 import me.bristermitten.spigotexamples.reflect.ReflectionCache;

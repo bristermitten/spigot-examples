@@ -1,4 +1,4 @@
-package me.bristermitten.spigotexamples.custom_enchantment;
+package me.bristermitten.spigotexamples.customenchantment;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;

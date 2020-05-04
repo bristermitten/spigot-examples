@@ -1,4 +1,4 @@
-package me.bristermitten.spigotexamples.runtime_dependencies;
+package me.bristermitten.spigotexamples.runtimelibraries;
 
 import me.bristermitten.spigotexamples.reflect.MemberType;
 import me.bristermitten.spigotexamples.reflect.ReflectionCache;
