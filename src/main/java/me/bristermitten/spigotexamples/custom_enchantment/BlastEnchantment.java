@@ -31,14 +31,13 @@ public final class BlastEnchantment extends Enchantment implements Listener
 
     /**
      * Main constructor for the enchantment.
-     * This provides the {@link NamespacedKey} that Bukkit requires and registers the event handler.
+     * This provides the {@link NamespacedKey} that Bukkit requires.
      *
      * @param plugin the plugin in charge of registering this enchantment
      */
     public BlastEnchantment(@NotNull final JavaPlugin plugin)
     {
         super(new NamespacedKey(plugin, ENCHANTMENT_NAME));
-        Bukkit.getPluginManager().registerEvents(this, plugin);
         this.random = new SplittableRandom();
     }
 
@@ -171,5 +170,18 @@ public final class BlastEnchantment extends Enchantment implements Listener
 
         //Summon the explosion
         event.getBlock().getWorld().createExplosion(event.getBlock().getLocation(), 4F);
+    }
+
+    @Override
+    public boolean equals(Object other)
+    {
+        if (!(other instanceof Enchantment)) return false;
+        return ((Enchantment) other).getKey().equals(this.getKey());
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return getKey().hashCode();
     }
 }

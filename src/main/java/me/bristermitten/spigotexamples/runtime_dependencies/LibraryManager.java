@@ -1,5 +1,8 @@
 package me.bristermitten.spigotexamples.runtime_dependencies;
 
+import me.bristermitten.spigotexamples.reflect.MemberType;
+import me.bristermitten.spigotexamples.reflect.ReflectionCache;
+import me.bristermitten.spigotexamples.reflect.ReflectionDefinition;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
@@ -19,10 +22,12 @@ import java.net.URLClassLoader;
 public class LibraryManager
 {
 
+    private static final ReflectionDefinition ADD_URL_DEF = new ReflectionDefinition(URLClassLoader.class, MemberType.METHOD, "addURL", URL.class);
+
     /**
      * The base URL of the Maven Central URL.
      */
-    private static final String MAVEN_REPO_URL = "https://repo1.maven.org/maven2";
+    private static final String MAVEN_REPO_URL = "https://repo1.maven.org/maven2/";
 
     /**
      * The plugin that these libraries are for.
@@ -31,7 +36,7 @@ public class LibraryManager
     private final JavaPlugin plugin;
     /**
      * The libs directory of the plugin (plugins/PluginName/libs)
-     * where downloaded libaries are stored.
+     * where downloaded libraries are stored.
      */
     @NotNull
     private final File libsDirectory;
@@ -45,7 +50,7 @@ public class LibraryManager
     {
         this.plugin = plugin;
         this.libsDirectory = new File(plugin.getDataFolder(), "libs");
-        if (!libsDirectory.mkdirs())
+        if (!libsDirectory.exists() && !libsDirectory.mkdirs())
         {
             plugin.getSLF4JLogger().warn("Could not create libs directory.");
         }
@@ -78,7 +83,8 @@ public class LibraryManager
      */
     private void loadIntoClasspath(@NotNull final File libraryFile)
     {
-        Method addUrl = ClassLoaderReflection.getAddUrlMethod();
+
+        Method addUrl = (Method) ReflectionCache.get(ADD_URL_DEF);
         URLClassLoader classLoader = (URLClassLoader) plugin.getClass().getClassLoader();
 
         try
@@ -104,14 +110,14 @@ public class LibraryManager
             final URL url = new URL(MAVEN_REPO_URL + library.toRepositoryURL());
 
             //Copy the data from the URL to the File
-            try (final Writer writer = new FileWriter(jarFile))
+            try (final BufferedWriter writer = new BufferedWriter(new FileWriter(jarFile)))
             {
-                try (final Reader reader = new InputStreamReader(url.openStream()))
+                try (final BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream())))
                 {
-                    int nextByte;
-                    while ((nextByte = reader.read()) != -1)
+                    String nextLine;
+                    while ((nextLine = reader.readLine()) != null)
                     {
-                        writer.write(nextByte);
+                        writer.write(nextLine);
                     }
                 }
             }
@@ -119,7 +125,6 @@ public class LibraryManager
         catch (IOException e)
         {
             plugin.getSLF4JLogger().error("Could not download {}", library, e);
-
         }
     }
 }
