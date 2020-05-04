@@ -1,5 +1,8 @@
 package me.bristermitten.spigotexamples.reflect;
 
+/**
+ * Thrown when a reflective operation failed.
+ */
 public class ReflectionFailedException extends RuntimeException
 {
 
