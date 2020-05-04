@@ -1,6 +1,5 @@
 package me.bristermitten.spigotexamples;
 
-import com.google.common.primitives.UnsignedInts;
 import me.bristermitten.spigotexamples.customenchantment.EnchantmentManager;
 import me.bristermitten.spigotexamples.runtimelibraries.Library;
 import me.bristermitten.spigotexamples.runtimelibraries.LibraryManager;
