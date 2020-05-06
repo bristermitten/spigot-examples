@@ -9,6 +9,7 @@ public final class SpigotExamples extends JavaPlugin
 {
 
     private EnchantmentManager enchantmentManager;
+    private static String kotlinVersion = "1.3.72";
 
     @Override
     public void onEnable()
@@ -22,7 +23,6 @@ public final class SpigotExamples extends JavaPlugin
         LibraryManager libraryManager = new LibraryManager(this);
 
         //For this example we will download the Kotlin stdlib
-        final String kotlinVersion = "1.3.72";
         libraryManager.loadLibraries(
                 new Library("org.jetbrains.kotlin", "kotlin-stdlib", kotlinVersion),
                 new Library("org.jetbrains.kotlin", "kotlin-stdlib-jdk8", kotlinVersion)
