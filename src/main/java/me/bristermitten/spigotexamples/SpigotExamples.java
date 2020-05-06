@@ -8,8 +8,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class SpigotExamples extends JavaPlugin
 {
 
+    private static final String KOTLIN_VERSION = "1.3.72";
     private EnchantmentManager enchantmentManager;
-    private static String kotlinVersion = "1.3.72";
 
     @Override
     public void onEnable()
@@ -24,8 +24,8 @@ public final class SpigotExamples extends JavaPlugin
 
         //For this example we will download the Kotlin stdlib
         libraryManager.loadLibraries(
-                new Library("org.jetbrains.kotlin", "kotlin-stdlib", kotlinVersion),
-                new Library("org.jetbrains.kotlin", "kotlin-stdlib-jdk8", kotlinVersion)
+                new Library("org.jetbrains.kotlin", "kotlin-stdlib", KOTLIN_VERSION),
+                new Library("org.jetbrains.kotlin", "kotlin-stdlib-jdk8", KOTLIN_VERSION)
         );
 
         try
