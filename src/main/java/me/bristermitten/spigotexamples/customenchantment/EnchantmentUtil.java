@@ -32,17 +32,18 @@ public final class EnchantmentUtil
         return PICKAXE_TYPES.contains(item.getType());
     }
 
-    /**
-     * Because these are custom enchantments, the Minecraft client does not add them to the lore automatically.
-     * As such, we have to add it ourselves.
-     * <p>
-     * This method uses {@link ItemMeta} and a few String operations to add the lore manually, removing old versioned lore.
-     *
-     * @param enchantment the enchantment to add.
-     * @param itemStack the item to add the enchantment to.
-     * @param level the level of the enchantment to add.
-     * @throws IllegalArgumentException if the enchantment is unsafe (more than the maximum level).
-     */
+	/**
+	 * Because these are custom enchantments, the Minecraft client does not add them to the lore automatically.
+	 * As such, we have to add it ourselves.
+	 * <p>
+	 * This method uses {@link ItemMeta} and a few String operations to add the lore manually, removing old versioned lore.
+	 *
+	 * @author Alex Wood
+	 * @param enchantment the enchantment to add.
+	 * @param itemStack the item to add the enchantment to.
+	 * @param level the level of the enchantment to add.
+	 * @throws IllegalArgumentException if the enchantment is unsafe (more than the maximum level).
+	 */
     public static void applyEnchantment(@NotNull final Enchantment enchantment, @NotNull final ItemStack itemStack, final int level) throws IllegalArgumentException
     {
         final ItemMeta itemMeta = itemStack.getItemMeta();
