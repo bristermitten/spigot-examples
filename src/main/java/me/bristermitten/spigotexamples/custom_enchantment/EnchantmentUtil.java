@@ -1,4 +1,4 @@
-package me.bristermitten.spigotexamples.customenchantment;
+package me.bristermitten.spigotexamples.custom_enchantment;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -45,7 +45,7 @@ public final class EnchantmentUtil
 	 * @author Alex Wood
 	 */
 
-    public static void applyEnchantment(@NotNull final Enchantment enchantment, @NotNull final ItemStack itemStack, final int level) throws IllegalArgumentException
+    public static void applyEnchantment(@NotNull final Enchantment enchantment, @NotNull final ItemStack itemStack, final int level)
     {
         final ItemMeta itemMeta = itemStack.getItemMeta();
         if (itemMeta == null) return; //the item type is probably AIR so can't be enchanted.
