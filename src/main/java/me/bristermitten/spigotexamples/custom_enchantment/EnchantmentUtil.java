@@ -69,7 +69,8 @@ public final class EnchantmentUtil
         itemMeta.setLore(lore);
         itemStack.setItemMeta(itemMeta);
 
-        //Simple as this! Glowing is handled automatically.
+        //Simple as this! Glowing is handled automatically. Use the top one for basic enchants, or bottom for unsafe enchants (higher levels)
         itemStack.addEnchantment(enchantment, level);
+	itemStack.addUnsafeEnchantment(enchantment, level);
     }
 }
